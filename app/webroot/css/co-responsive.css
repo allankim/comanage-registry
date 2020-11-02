@@ -379,8 +379,19 @@
     float: left;
     width: 49%;
   }
+  .top-search .search-field-subgroup .input {
+    display: grid;
+    grid-template-columns: 1fr 7fr;
+  }
+  .top-search .search-field-subgroup .input label {
+    text-align: right;
+    margin-right: 1em;
+  }
   .search-field-subgroup:nth-child(1) {
     margin-right: 0.5em;
+  }
+  .top-search #top-search-fields {
+    padding-top: 1em;
   }
   .top-search #top-search-fields .clear-button {
     float: right;
