@@ -231,10 +231,8 @@ function clearTopSearch(formObj,sessionKey) {
       type: 'GET',
       url: '/registry/session_xhr/manage/delete/' + sessionKey
     }).done(function() {
-      console.log("done");
       formObj.submit();
     }).fail(function(){
-      console.log("failed");
     });
 
   } else {
