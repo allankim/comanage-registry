@@ -448,7 +448,7 @@ form#notificationStatus {
 /* General icon and box styling */
 .co-info { /* info icon */
   float: left;
-  margin: 0.3em 0.3em 0 0;
+  margin: 0 0.25em 0 0;
 }
 .co-alert { /* alert icon */
   float:left;
@@ -802,7 +802,7 @@ body.co_people.canvas .titleNavContainer {
 #fpCoList .co-row {
   cursor: pointer;
 }
-#fpCoList .mdl-grid.co-row:hover {
+#fpCoList .co-row:hover {
   background-color: #eee;
 }
 /* CONFIGURATION PAGE */
@@ -1381,7 +1381,6 @@ body.co_petitions .ui-dialog {
 #co_people .ui-widget-content .ui-state-focus,
 #co_people .ui-widget-header .ui-state-focus {
   border: 1px solid #79b7e7;
-  /*background-color: #d0e5f5;*/
   background-color: #e6f4ff;
   color: #1d5987;
 }
@@ -1724,7 +1723,7 @@ ul.data-table li {
 }
 /* Changelog */
 #changeLog {
-  margin-top: 1em;
+  margin: 1em 0;
 }
 #changeLog ul {
   margin: 0;
@@ -1779,6 +1778,14 @@ ul.data-table li {
 }
 #groupMembers tr:nth-child(even) td {
   background-color: #eee;
+}
+#group-add-member-name {
+  font-weight: 600;
+  font-size: 1.4em;
+  margin-right: 0.25em;
+}
+#group-add-member-clear-button {
+  padding: 0.5em;
 }
 /* FORMS */
 label {
@@ -2260,43 +2267,133 @@ td.indented {
 .submitCell {
   text-align: right;
 }
-/* MDL OVERRIDES */
-/* See also font-size in body, and in GENERAL ul,li from 14px to 12px */
-#main.mdl-layout__content {
-  overflow-x: auto; /* allow side scrolling on mobile */
+/* Loading animation */
+@keyframes loading {
+  0%   { opacity: 0.3; }
+  30%  { opacity: 1.0; }
+  100% { opacity: 0.3; }
 }
-.mdl-textfield input[type=text],
-.mdl-textfield input[type=number] {
-  border-left: none;
-  border-top: none;
-  border-right: none;
+#co-loading {
+  display: none; /* revealed by JavaScript */
+  position: absolute;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  width: 120px;
+  margin: -25px 0 0 -60px;
+  padding: 2em 0;
+  line-height: 0;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 60px;
 }
-.mdl-button.mdl-button--colored,
-.mdl-button--raised.mdl-button--colored {
-  background-color: #0C75C0 !important; /* important required to override MDL's active state */
+#co-loading-redirect {
+  padding: 1em 1em 0;
+  text-align: center;
+}
+#co-loading span,
+#co-loading-redirect span,
+.co-loading-mini span {
+  animation: 1.2s linear infinite both loading;
+  background-color: #9FC6E2;
+  display: inline-block;
+}
+#co-loading span {
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+  margin: 0 2.5px;
+}
+#co-loading-redirect span {
+  height: 16px;
+  width: 16px;
+  border-radius: 8px;
+  margin: 0 2px;
+}
+.co-loading-mini span {
+  height: 6px;
+  width: 6px;
+  border-radius: 3px;
+  margin: 0 1px;
+}
+#co-loading span:nth-child(2),
+#co-loading-redirect span:nth-child(2),
+.co-loading-mini span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+#co-loading span:nth-child(3),
+#co-loading-redirect span:nth-child(3),
+.co-loading-mini span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+/*#main { XXX - need to check this
+  overflow-x: auto; /* allow side scrolling on mobile * /
+}*/
+/* Buttons */
+.btn {
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: 3px;
+  font-size: 1.2em;
+  padding: 0.5em 1.5em;
+}
+.btn:focus {
+  border: 1px dotted black;
+}
+.btn.btn-sm {
+  font-size: 0.9em;
+  margin: -0.5em 0 0 0.1em;
+}
+.btn-primary,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: #0c75c0;
   color: white;
+  border-color: #0c75c0;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
 }
-.mdl-button--raised.mdl-button--colored:hover {
-  background-color: #222 !important;
+.btn-primary:hover {
+  background-color: black;
   color: white !important;
+  text-decoration: none !important;
 }
-.mdl-button:hover {
-  background-color: #f2f2f2;
+.btn:focus {
+  border: 1px dotted white;
 }
-.mdl-button--colored:hover {
-  background-color: rgb(33, 150, 243);
-}
-.mdl-button--accent.mdl-button--accent.mdl-button--raised,
-.mdl-button--accent.mdl-button--accent.mdl-button--fab {
-  background-color: #c33; /* red */
+.btn-primary.disabled,
+.btn-primary:disabled {
   color: #fff;
+  background-color: #0c75c0;
+  border-color: #0c75c0;
+  opacity: 0.4;
 }
-.mdl-data-table th,
-.mdl-data-table td {
-  text-align: left;
+.btn-default,
+.btn-default:focus,
+.btn-default:active {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+}
+.btn-default:hover {
+  background-color: #eee;
+  text-decoration: underline;
+}
+.btn-secondary {
+  background-color: #c33; /* red */
+  color: white;
 }
 /* FOOTER */
 footer {
   text-align: center;
-  padding-bottom: 1em;
+  padding: 2em;
+}
+body.logged-out footer,
+body.redirect footer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+body.logged-out #footer-drawer,
+body.redirect #footer-drawer {
+  display: none;
 }
