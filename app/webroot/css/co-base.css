@@ -1099,8 +1099,7 @@ body.co_petitions .ui-dialog {
   margin: 0;
   min-height: 1.5em;
   padding: 0.5em;
-  /*background-color: #9FC6E2;*/
-  background-color: #1D7AB4;
+  background-color: var(--cmg-blue-primary);
   color: white;
   text-align: center;
 }
@@ -1367,6 +1366,9 @@ body.co_petitions .ui-dialog {
 #co_people .roledates {
   text-align: right;
   margin: 0 30px 0 0;
+}
+#co_people .form-group {
+  margin-bottom: 0;
 }
 /* people index jquery ui overrides */
 #co_people .person-panel {
@@ -1681,27 +1683,64 @@ ul.data-list li:nth-child(2n) {
 ul.data-table li {
   background-color: unset;
 }
+ul.fields.data-list li {
+  overflow: visible;
+}
 .field-actions {
-   float: right;
-   padding: 2px;
+  padding: 2px;
+  position: relative;
+  align-items: center;
+  justify-content: flex-end;
+  align-self: center;
+  grid-area: action
+}
+.td-field-actions {
+  padding-right: 1em;
 }
 .field-data {
-  float: left;
   padding: 4px 0 0 10px;
+  grid-area: value;
 }
 .field-data-alone {
   padding: 2px 0 2px 10px;
+}
+.field-data-container {
+  display: grid;
+}
+.field-actions,
+.field-data {
+  display: flex;
+  padding: 0.2em 1em 0.2em 1em;
+  align-content: center;
+}
+.field-data a {
+  margin: auto;
+  width: 100%;
+  text-align: start;
+}
+.field-data a cite {
+  color: initial;
+}
+.td-field-actions a,
+.field-actions a {
+  text-decoration: none !important;
+}
+small.force-wrap,
+.field-data.force-wrap {
+  overflow-wrap: anywhere;
+}
+.field-data.data-label {
+  align-items: center;
+  grid-area: label;
 }
 #names-container ul.data-list {
   margin-bottom: 0;
 }
 #names-container ul.data-list li:last-child {
   margin-bottom: 0;
-  border-bottom: 2px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
-.personExplorer .coAddEditButtons .ui-state-default,
-.personExplorer .coAddEditButtons .ui-widget-content .ui-state-default,
-.personExplorer .coAddEditButtons .ui-widget-header .ui-state-default {
+.personExplorer .coAddEditButtons .addbutton {
   background: none;
   border: none;
 }
@@ -1787,9 +1826,16 @@ ul.data-table li {
 #group-add-member-clear-button {
   padding: 0.5em;
 }
+#group-add-member-info {
+  display: none; /* for now (v4.0) - maybe a tooltip in future */
+}
 /* FORMS */
 label {
   cursor: pointer;
+}
+.form-group.disabled label,
+.form-group.disabled input {
+  cursor: default;
 }
 ul.fields li {
   overflow-x: auto; /* required for data tables on mobile */
@@ -2275,7 +2321,7 @@ td.indented {
 }
 #co-loading {
   display: none; /* revealed by JavaScript */
-  position: absolute;
+  position: fixed;
   z-index: 100;
   top: 50%;
   left: 50%;
@@ -2348,9 +2394,9 @@ td.indented {
 .btn-primary,
 .btn-primary:focus,
 .btn-primary:active {
-  background-color: #0c75c0;
+  background-color: var(--cmg-blue-primary);
   color: white;
-  border-color: #0c75c0;
+  border-color: var(--cmg-blue-primary);
   box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
 }
 .btn-primary:hover {
@@ -2380,6 +2426,30 @@ td.indented {
 .btn-secondary {
   background-color: #c33; /* red */
   color: white;
+}
+/*Bootstrap*/
+.dropdown-menu {
+  font-size: 1em;
+  border-radius: unset;
+  min-width: 7rem;
+}
+.dropdown-item {
+  color: #06c;
+  padding: 0.5em;
+}
+.dropdown-item:focus,
+.dropdown-item:hover {
+  text-decoration: none !important;
+}
+.text-muted-cmg {
+  color: #555 !important;
+}
+.smaller {
+  font-size: smaller;
+}
+.form-check-input:disabled ~ .form-check-label,
+.form-check-input[disabled] ~ .form-check-label {
+  color: var(--cmg-gray-disabled);
 }
 /* FOOTER */
 footer {
