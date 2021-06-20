@@ -448,7 +448,7 @@ form#notificationStatus {
 /* General icon and box styling */
 .co-info { /* info icon */
   float: left;
-  margin: 0 0.25em 0 0;
+  margin: 0.3em 0.3em 0 0;
 }
 .co-alert { /* alert icon */
   float:left;
@@ -738,11 +738,23 @@ body.co_people.canvas .titleNavContainer {
 /* DASHBOARDS */
 #dashboard-tabs {
   clear: both;
-  margin: 0 0 2em;
+  margin: 1em 0;
 }
 #dashboard-desc {
   clear: both;
   margin-top: 1em;
+}
+#dashboard-tabs .nav-link {
+  text-transform: uppercase;
+  padding: 1em 1.5em;
+  font-size: 1.2em;
+  opacity: 0.8;
+}
+#dashboard-tabs .nav-link.active {
+  background-color: #f8f8f8;
+  border: 1px solid #f2f2f2;
+  border-bottom: none;
+  border-radius: 0;
 }
 .mini-spinner {
   position: relative;
@@ -793,10 +805,6 @@ body.co_people.canvas .titleNavContainer {
   padding: 1em;
   text-align: center;
   width: 240px;
-}
-#redirect-spinner {
-  padding: 1em 1em 2em;
-  position: relative;
 }
 /* SELECT CO */
 #fpCoList .co-row {
@@ -878,10 +886,6 @@ body.co_people.canvas .titleNavContainer {
   padding: 1em;
   background-color: rgb(250, 250, 250);
   clear: both;
-}
-.modelbox .mdl-textfield {
-  display: block;
-  width: 100%;
 }
 .modelbox .boxtitle {
   padding: 0 0 5px 0;
@@ -1008,7 +1012,6 @@ iframe#tandc_content {
 }
 #view_co_petition .ui-button {
   margin: 0.5em 0.5em 1.5em 0;
-  padding: 0 2em;
 }
 body.co_petitions.view th,
 body.co_petitions.view td,
@@ -1022,11 +1025,16 @@ body.petitionerAttributes td {
 }
 .filters-box {
   background-color: #f5f5f5;
-  border: 1px solid #a0c6e3;
+  border: 1px solid #ddd;
   clear: both;
   margin: 1em 0;
   min-height: 2.2em;
-  padding: 0 0.5em 0.5em;
+  padding: 0 1em 0.5em;
+}
+.filters-box legend {
+  font-size: 1.3em;
+  width: auto;
+  margin-bottom: 0.2em;
 }
 .filters-box .checkbox {
   display: inline-block;
@@ -1043,8 +1051,6 @@ body.petitionerAttributes td {
 .filters-box .submit-button {
   float: right;
   font-size: 0.9em;
-  height: 28px;
-  line-height: 28px;
   margin: -4px 0 0 0;
   width: 80px;
 }
@@ -1158,13 +1164,8 @@ body.co_petitions .ui-dialog {
 /********************************/
 /* Listing controls */
 .listControl {
-  color: #1D5987;
   margin: 0;
   clear: left;
-}
-.listControl a:hover {
-  color: #444;
-  text-decoration: none !important;
 }
 .listControl ul,
 .listControl li {
@@ -1367,9 +1368,6 @@ body.co_petitions .ui-dialog {
   text-align: right;
   margin: 0 30px 0 0;
 }
-#co_people .form-group {
-  margin-bottom: 0;
-}
 /* people index jquery ui overrides */
 #co_people .person-panel {
   border: 1px solid transparent; /* to allow our jquery UI hovers not to change the size of the div */
@@ -1407,7 +1405,7 @@ a.ui-button,
 a.ui-button:link,
 a.ui-button:visited,
 .ui-button {
-  color: #06b;
+  color: #06c;
   text-decoration: none;
 }
 /* For Top Search (co_people index and org_identity index)
@@ -1448,8 +1446,10 @@ a.ui-button:visited,
   background-color: #f5f5f5;
   margin: 0 -0.5em;
   padding: 0.5em 0.5em 0;
-  line-height: 2em;
+  line-height: 2.25em;
   cursor: pointer;
+  font-size: 1em;
+  box-sizing: content-box;
 }
 #top-search-fields {
   display: none;
@@ -1466,6 +1466,9 @@ a.ui-button:visited,
   padding: 2px 4px;
   border: 1px solid #ddd;
   background-color: #fff;
+}
+.top-search label {
+  margin-bottom: 0;
 }
 ::-webkit-input-placeholder,
 ::-moz-placeholder,
@@ -1486,7 +1489,8 @@ a.ui-button:visited,
   width: 80px;
   line-height: 28px;
   height: 28px;
-  margin: 0.5em;
+  margin: 1em 0.5em;
+  padding: 0;
 }
 .top-search .top-search-checkboxes {
   margin-top: 0.5em;
@@ -1496,6 +1500,8 @@ a.ui-button:visited,
   width: auto;
   height: auto;
   line-height: unset;
+  margin: 0;
+  padding: 0 1em;
 }
 .top-search .filter-clear-all-button:hover {
   background-color: unset;
@@ -1676,9 +1682,11 @@ ul.data-list li {
   overflow: hidden;
   padding: 2px 0 3px 0;
   background-color: #F5F5F5;
+  border: 1px solid #F5F5F5;
 }
 ul.data-list li:nth-child(2n) {
   background-color: #ededed; /* note that this is slightly lighter than the .form-list zebra */
+  border: 1px solid #ededed;
 }
 ul.data-table li {
   background-color: unset;
@@ -1725,7 +1733,7 @@ ul.fields.data-list li {
 .field-actions a {
   text-decoration: none !important;
 }
-small.force-wrap,
+.smaller.force-wrap,
 .field-data.force-wrap {
   overflow-wrap: anywhere;
 }
@@ -1779,7 +1787,7 @@ small.force-wrap,
   padding: 0;
 }
 #changeLog tr.deleted td {
-  background-color: #e33;
+  background-color: #c33;
   color: white;
 }
 .explorerContainer #changeLog ul {
@@ -1833,12 +1841,13 @@ small.force-wrap,
 label {
   cursor: pointer;
 }
-.form-group.disabled label,
-.form-group.disabled input {
-  cursor: default;
-}
+#coPersonExplorer.personExplorer,
+#coOrgIdExplorer.personExplorer,
 ul.fields li {
-  overflow-x: auto; /* required for data tables on mobile */
+  overflow: visible; /* required for data tables on mobile */
+}
+#form-dialog-legend {
+  font-size: inherit;
 }
 /*** ul.form-list is the main structure for representing forms
      as well as data where field name is in the left column and
@@ -1897,6 +1906,7 @@ ul.form-list input[type="password"]:focus {
   background-color: #ffd;
 }
 ul.form-list select {
+  display: inline-block;
   font-size: 0.9em;
 }
 ul.form-list li.fields-submit .required {
@@ -2029,14 +2039,12 @@ ul.form-list li.field-stack textarea {
   font-size: 16px;
   margin: 0;
 }
-
-/* XXX determine which among the following five rules are still in use */
-.required-info {
-  float: left;
-}
 .submit-buttons {
   float: right;
-  margin-right: 0.5em;
+  margin: 0 0 1em;
+}
+.required-info {
+  float: left;
 }
 .co-selectfield {
   width: 100%;
@@ -2432,6 +2440,7 @@ td.indented {
   font-size: 1em;
   border-radius: unset;
   min-width: 7rem;
+  padding: 0;
 }
 .dropdown-item {
   color: #06c;
@@ -2452,18 +2461,14 @@ td.indented {
   color: var(--cmg-gray-disabled);
 }
 /* FOOTER */
-footer {
+#co-footer {
   text-align: center;
   padding: 2em;
 }
-body.logged-out footer,
-body.redirect footer {
+body.logged-out #co-footer,
+body.redirect #co-footer {
   position: fixed;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-}
-body.logged-out #footer-drawer,
-body.redirect #footer-drawer {
-  display: none;
 }
